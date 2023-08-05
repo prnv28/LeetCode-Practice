@@ -15,22 +15,21 @@ public:
         if(!root) return 0;
         queue<pair<TreeNode*,long long>> q;
         q.push({root,0});
-        long long  ans=0;
+        long long ans=0;
         while(!q.empty()){
-            long long  n = q.size();
-            long long  mini=0;
-            long long  maxi=0;
-            long long  curMin = q.front().second;
-            for(int i=0;i<n;i++){
+            long long n = q.size();
+            long long left = q.front().second;
+            long long right = q.back().second;
+            ans = max(ans,right-left+1);
+            
+            for(long i=0;i<n;i++){
                 TreeNode* temp = q.front().first;
-                long long  ind = q.front().second-curMin;
-                if(i==0) mini = ind;
-                if(i==n-1) maxi = ind;
+                long long ind = q.front().second - left;
                 q.pop();
-                if(temp->left) q.push({temp->left,(2*ind)+1});
-                if(temp->right) q.push({temp->right,(2*ind)+2});
+                if(temp->left) q.push({temp->left,(long long)(2*ind)+1});
+                if(temp->right) q.push({temp->right,(long long)(2*ind)+2});
             }
-            ans = max(ans,maxi-mini+1);
+            
         }
         return (int)ans;
     }
