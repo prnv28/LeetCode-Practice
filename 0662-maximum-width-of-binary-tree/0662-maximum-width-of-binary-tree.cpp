@@ -15,14 +15,13 @@ public:
         if(!root) return 0;
         queue<pair<TreeNode*,long>> q;
         q.push({root,0});
-        long ans=0;
+        long ans=0,n,left,right,ind;
+        TreeNode* temp;
         while(!q.empty()){
-            long n = q.size();
-            long left = q.front().second;
-            long right = q.back().second;
+            n = q.size();
+            left = q.front().second;
+            right = q.back().second;
             ans = max(ans,right-left+1);
-            TreeNode* temp;
-            long ind;
             for(long i=0;i<n;i++){
                 temp = q.front().first;
                 ind = q.front().second - left;
