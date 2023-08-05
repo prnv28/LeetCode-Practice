@@ -21,10 +21,11 @@ public:
             long left = q.front().second;
             long right = q.back().second;
             ans = max(ans,right-left+1);
-            
+            TreeNode* temp;
+            long ind;
             for(long i=0;i<n;i++){
-                TreeNode* temp = q.front().first;
-                long ind = q.front().second - left;
+                temp = q.front().first;
+                ind = q.front().second - left;
                 q.pop();
                 if(temp->left) q.push({temp->left,(long)(2*ind)+1});
                 if(temp->right) q.push({temp->right,(long)(2*ind)+2});
