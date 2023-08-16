@@ -11,35 +11,15 @@
  */
 class Solution {
 public:
-
-    bool isPallindrom(vector<int> &temp){
-        int n = temp.size();
-        for(int i=0;i<n/2;i++){
-            if(temp[i]!=temp[n-i-1]){
-                return false;
-            }
+    bool algo(TreeNode* root1, TreeNode* root2){
+        if(root1==NULL || root2==NULL){
+            return (root1==root2);
         }
-        return true;
+
+        return ((root1->val==root2->val) && algo(root1->right,root2->left) && algo(root1->left,root2->right));
     }
     bool isSymmetric(TreeNode* root) {
-        queue<TreeNode*> q;
-        q.push(root);
-        while(!q.empty()){
-            int n=q.size();
-            vector<int> temp;
-            for(int i=0;i<n;i++){
-                TreeNode* node = q.front();
-                q.pop();
-                if(node){
-                    temp.push_back(node->val);
-                    q.push(node->left);
-                    q.push(node->right);
-                }else{
-                    temp.push_back(INT_MAX);
-                }
-            }
-            if(!isPallindrom(temp)) return false;
-        }
-        return true;
+        if(!root) return true;
+        return algo(root->left,root->right);
     }
 };
