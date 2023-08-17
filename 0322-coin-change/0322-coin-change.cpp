@@ -1,22 +1,16 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount+1, INT_MAX-1);
+        int dp[++amount];
         dp[0] = 0;
-        int n = coins.size();
-        vector<int> curr = dp;
-
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<amount+1;j++){
-                if(coins[i-1]>j){
-                    curr[j] = 0 + dp[j];
-                }else{
-                    curr[j] = min(dp[j],1+curr[j-coins[i-1]]);
-                }
+        sort(begin(coins), end(coins));
+        for (int i = 1; i < amount; i++) {
+            dp[i] = INT_MAX;
+            for (int c: coins) {
+                if (i - c < 0) break;
+                if (dp[i - c] != INT_MAX) dp[i] = min(dp[i], 1 + dp[i - c]);
             }
-            dp = curr;
         }
-
-        return dp[amount]==INT_MAX-1?-1:dp[amount];
+        return dp[--amount] == INT_MAX ? -1 : dp[amount];
     }
 };
