@@ -9,6 +9,8 @@ public:
             for(int c : coins){
                 if((i-c)>=0){
                     dp[i] = min(dp[i],1+dp[i-c]);
+                }else{
+                    break;
                 }
             }
         }
