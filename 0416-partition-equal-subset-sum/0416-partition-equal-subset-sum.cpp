@@ -22,7 +22,9 @@ public:
         int target = accumulate(nums.begin(),nums.end(),0);
         if(target%2 || n<2) return false;
         target = target/2;
-        vector<vector<int>> dp(n+1,vector<int>(target+1,-1));
+        vector<vector<int>> dp(n,vector<int>(target+1,-1));
+
+        // for(int i=0;i<target+1)
 
         algo(n-1,target,nums,dp);
         return dp[n-1][target];
