@@ -3,10 +3,8 @@ public:
     bool algo(int i, int target, vector<int> &nums,vector<vector<int>>& dp){
         
         if(target==0) return 1;
-        if(i==0 && nums[i]==target){
-            return 1;
-        }else if(i==0){
-            return 0;
+        if(i==0){
+            return nums[i]==target;
         }
 
         if(dp[i][target]!=-1) return dp[i][target];
@@ -25,6 +23,7 @@ public:
         if(target%2 || n<2) return false;
         target = target/2;
         vector<vector<int>> dp(n+1,vector<int>(target+1,-1));
+
         algo(n-1,target,nums,dp);
         return dp[n-1][target];
         
