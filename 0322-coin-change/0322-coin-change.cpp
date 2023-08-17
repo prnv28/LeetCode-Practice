@@ -7,10 +7,10 @@ public:
         for(int i=1;i<amount+1;i++){
             dp[i] = amount+1;
             for(int c : coins){
-                if((i-c)>=0){
-                    dp[i] = min(dp[i],1+dp[i-c]);
-                }else{
+                if((i-c)<0){
                     break;
+                }else if(dp[i - c] != amount+1){
+                    dp[i] = min(dp[i],1+dp[i-c]);
                 }
             }
         }
