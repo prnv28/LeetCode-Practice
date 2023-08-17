@@ -22,11 +22,20 @@ public:
         int target = accumulate(nums.begin(),nums.end(),0);
         if(target%2 || n<2) return false;
         target = target/2;
-        vector<vector<int>> dp(n,vector<int>(target+1,-1));
-
-        // for(int i=0;i<target+1)
-
-        algo(n-1,target,nums,dp);
+        vector<vector<int>> dp(n+1,vector<int>(target+1,0));
+        for(int i=0;i<n;i++){
+            dp[i][0] = 1;
+        }
+        for(int i=1;i<n;i++){
+            for(int j=1;j<target+1;j++){
+                if(j>=nums[i]){
+                    dp[i][j] = dp[i-1][j-nums[i]] || dp[i-1][j];
+                }else{
+                    dp[i][j] = dp[i-1][j];
+                }
+                
+            }
+        }
         return dp[n-1][target];
         
     }
