@@ -9,8 +9,7 @@ public:
             if(data.back()<nums[i]){
                 data.push_back(nums[i]);
             }else{
-                int index = lower_bound(data.begin(),data.end(),nums[i]) - data.begin();
-                data[index] = nums[i];
+                data[lower_bound(data.begin(),data.end(),nums[i]) - data.begin()] = nums[i];
             }
         }
         return data.size();
