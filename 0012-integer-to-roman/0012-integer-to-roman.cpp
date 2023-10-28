@@ -24,6 +24,9 @@ public:
                 ans +=mp[divisor[i]];
                 temp -=divisor[i];
             }
+            if(temp<=0){
+                break;
+            }
         }
         return ans;
     }
