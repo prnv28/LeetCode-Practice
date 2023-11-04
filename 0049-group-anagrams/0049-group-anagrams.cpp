@@ -23,7 +23,6 @@ public:
         for(int i=0;i<26;i++){
             key+=to_string(count[i])+"#";
         }
-        count.clear();
         return key;
     }
 };
