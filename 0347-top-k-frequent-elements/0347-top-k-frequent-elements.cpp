@@ -12,8 +12,8 @@ public:
         
         unordered_map<int,int> ds;
         vector<int> result;
-        for(int i=0;i<nums.size();i++){
-            ds[nums[i]]++;
+        for(int i : nums){
+            ds[i]++;
         }
         
         priority_queue<pair<int,int>,vector<pair<int,int>>,cmp> pq;
