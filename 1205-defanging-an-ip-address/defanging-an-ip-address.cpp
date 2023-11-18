@@ -8,8 +8,8 @@ public:
     string defangIPaddr(string address) {
         string result="";
         for(char c : address){
-            if(c=='.') result+="[.]";
-            else result+=c;
+            if(c!='.') result+=c;
+            else result+="[.]";
         }
         return result;
     }
