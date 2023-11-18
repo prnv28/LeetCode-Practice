@@ -7,7 +7,7 @@ public:
     }
     string defangIPaddr(string address) {
         string res;
-        for(auto i : address){
+        for(char i : address){
             if(i == '.')
                 res += "[.]";
             else 
