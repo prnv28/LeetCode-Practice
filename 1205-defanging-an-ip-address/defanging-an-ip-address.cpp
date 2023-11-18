@@ -5,7 +5,6 @@ public:
         cin.tie(0);
         cout.tie(0);
     }
-    
     string defangIPaddr(string address) {
         string result="";
         for(char c : address){
