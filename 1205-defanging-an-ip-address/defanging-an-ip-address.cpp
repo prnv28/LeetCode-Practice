@@ -6,11 +6,13 @@ public:
         cout.tie(0);
     }
     string defangIPaddr(string address) {
-        string result="";
-        for(char c : address){
-            if(c!='.') result+=c;
-            else result+="[.]";
+        string res;
+        for(auto i : address){
+            if(i == '.')
+                res += "[.]";
+            else 
+                res += i;
         }
-        return result;
+        return res;
     }
 };
