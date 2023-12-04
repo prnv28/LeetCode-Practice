@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int region(int x1,int y1,int x2,int y2){
+    int local_cost(int x1,int y1,int x2,int y2){
         if(x2>=x1 && y2>=y1){
             if(x1==x2) return (y2-y1);
             else if(y1==y2) return (x2-x1);
@@ -45,8 +45,7 @@ public:
     int minTimeToVisitAllPoints(vector<vector<int>>& points) {
         int time = 0;
         for(int i=1;i<points.size();i++){
-            time += region(points[i][0],points[i][1],points[i-1][0],points[i-1][1]);
-            
+            time += local_cost(points[i][0],points[i][1],points[i-1][0],points[i-1][1]);
         }
         return time;
     }
