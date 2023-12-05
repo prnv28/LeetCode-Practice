@@ -3,12 +3,12 @@ public:
     int numberOfMatches(int n) {
         int count = 0;
         while(n>1){
+            int temp = (n>>1);
+            count += temp;
             if(n&1){
-                count += ((n-1)>>1);
-                n =  (n>>1) + 1;
+                n = temp+1;
             }else{
-                count += (n>>1);
-                n = n>>1;
+                n = temp;
             }
         }
         return count;
