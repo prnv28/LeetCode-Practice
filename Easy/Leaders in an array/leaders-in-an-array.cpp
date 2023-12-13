@@ -20,9 +20,7 @@ class Solution{
                 maxi = a[i];
             }
         }
-        for(int i=0;i<result.size()/2;i++){
-            swap(result[i],result[result.size()-1-i]);
-        }
+        reverse(result.begin(), result.end());
         return result;
         
     }
