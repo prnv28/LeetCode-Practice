@@ -1,16 +1,11 @@
 class Solution {
 public:
     int totalMoney(int n) {
-        int rem = n%7;
-        int weeks = n/7;
-        int total = 0;
-        for(int i=7;i<7+weeks;i++){
-            total += (i*(i+1))/2;
-            total -= ((i-7)*(i-6))/2;
+        int rem = n%7,weeks = n/7,total=0;
+        for(int i=0;i<weeks;i++){
+            total += (7*i)+28;
         }
-        for(int i=weeks+1;i<=weeks+rem;i++){
-            total+= i;
-        }
+        total += ((rem*(rem+1))/2) + (rem*weeks);
         return total;
     }
 };
