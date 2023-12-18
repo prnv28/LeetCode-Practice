@@ -1,6 +1,8 @@
 class Solution {
 public:
     int maxProductDifference(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);  
+        cin.tie(NULL);
         int n = nums.size();
         int smallest = INT_MAX,secondSmallest = INT_MAX;
         int biggest = 0,secondBiggest = 0;
