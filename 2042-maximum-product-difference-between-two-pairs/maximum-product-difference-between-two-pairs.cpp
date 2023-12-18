@@ -1,9 +1,9 @@
 class Solution {
 public:
-    Solution(){
-        ios_base::sync_with_stdio(false);  
-        cin.tie(NULL);
-    }
+    // Solution(){
+    //     ios_base::sync_with_stdio(false);  
+    //     cin.tie(NULL);
+    // }
     int maxProductDifference(vector<int>& nums) {
         int n = nums.size();
         int smallest = INT_MAX,secondSmallest = INT_MAX;
