@@ -21,7 +21,6 @@ public:
                 secondSmallest = nums[i];
             }
         }
-        // cout<<biggest<<":"<<secondBiggest<<":::"<<secondSmallest<<":"<<smallest<<endl;
         return (secondBiggest*biggest) - (secondSmallest*smallest);
     }
 };
