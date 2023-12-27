@@ -1,12 +1,10 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        int n = s.size();
-        int i=0,j=n-1;
+        int i=0,j=s.size()-1;
         while(i<j){
-            while(i<=n-1 && !iswalnum(tolower(s[i]))) i++;
-            while(j>=0 && !iswalnum(tolower(s[j]))) j--;
-            if(i>j) break;
+            while(i < j && !iswalnum(tolower(s[i]))) i++;
+            while(i < j && !iswalnum(tolower(s[j]))) j--;
             if(tolower(s[i])!=tolower(s[j])) return false;
             i++;
             j--;
