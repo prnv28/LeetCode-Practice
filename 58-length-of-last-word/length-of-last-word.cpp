@@ -6,9 +6,10 @@ public:
         cout.tie(NULL);
         int n=s.size();
         int count = 0;
-        for(int i=n-1;i>=0;i--){
-            if(s[i]==' ' && count==0) continue;
-            else if(s[i]==' ' && count>0) return count;
+        int i=n-1;
+        while(i>=0 and s[i]==' ') i--;
+        for(;i>=0;i--){
+            if(s[i]==' ') return count;
             count++;
         }
         return count;
