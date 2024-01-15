@@ -3,23 +3,14 @@ public:
     vector<int> replaceElements(vector<int>& arr) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
-        stack<int> s;
         int n=arr.size();
-        vector<int> result;
-        for(int i=n-1;i>=0;i--){
-            if(s.empty()){
-                result.push_back(-1);
-                s.push(arr[i]);
-            }else{
-                result.push_back(s.top());
-                if(s.top()<arr[i]){
-                    s.pop();
-                    s.push(arr[i]);
-                }
-            }
-            
+        vector<int> result(n);
+        int maxi = arr[n-1];
+        result[n-1]=-1;
+        for(int i=n-2;i>=0;i--){
+            result[i] = maxi;
+            maxi = max(maxi,arr[i]); 
         }
-        reverse(result.begin(),result.end());
         return result;
     }
 };
