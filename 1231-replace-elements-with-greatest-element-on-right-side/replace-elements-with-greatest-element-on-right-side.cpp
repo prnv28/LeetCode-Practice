@@ -8,6 +8,6 @@ public:
             swap(largest, arr[i]);
             largest = max(arr[i], largest);
         }
-        return move(arr);
+        return arr;
     }
 };
