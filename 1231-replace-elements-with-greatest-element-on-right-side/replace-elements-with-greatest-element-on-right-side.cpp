@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> replaceElements(vector<int>& arr) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         stack<int> s;
         int n=arr.size();
         vector<int> result;
