@@ -12,8 +12,6 @@ public:
             for (int j = i; j < i + 3 && j < n; j++) {
                 temp.push_back(nums[j]);
             }
-            // for(int m=0;m<temp.size();m++) cout<<temp[m]<<" ";
-            // cout<<endl;
             if (temp[temp.size()-1] - temp[0] > k){
                 return {};
             }
