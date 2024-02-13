@@ -5,14 +5,13 @@ public:
         if(n==0) return 0;
         if(n==1) return nums[0];
         vector<int> dp(n,-1);
-        dp[0] = nums[0];
-        dp[1] = max(nums[0],nums[1]);
+        int first = nums[0];
+        int second = max(nums[0],nums[1]);
         for(int i=2;i<n;i++){
-            int left = dp[i-1];
-            int right = INT_MIN;
-            if(i>=2) right = nums[i]+dp[i-2];
-            dp[i] = max(left,right);
+            int temp = second;
+            second = max(nums[i]+first,second);
+            first = temp;
         } 
-        return dp[n-1];
+        return second;
     }
 };
