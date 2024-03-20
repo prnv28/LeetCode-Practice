@@ -1,30 +1,23 @@
 class Solution {
 public:
-    int minFallingPathSum(vector<vector<int>>& matrix) {
-        if(matrix.size()==0) return 0;
-        int m = matrix.size();
-        int n = matrix[0].size();
-        vector<int> prev(n,0);
-        vector<int> curr(n,0);
-        int mini = INT_MAX;
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                curr[j] = matrix[i][j];
-                if(i==0){
-                }else if(j==0){
-                    curr[j] += min(prev[j],prev[j+1]);
-                }else if(j==n-1){
-                    curr[j] += min(prev[j-1],prev[j]);
-                }else{
-                    curr[j] += min(min(prev[j-1],prev[j]),prev[j+1]);
-                }
 
-                if(i==m-1){
-                    mini = min(mini,curr[j]);
-                }
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int m = 1e9;
+        int n = matrix.size();
+        for(int i=1;i<n;i++){
+            for(int j=0;j<n;j++){
+                int l = j>0 ? matrix[i-1][j-1] : 1e9;
+                int r = n-1>j ? matrix[i-1][j+1] : 1e9;
+                matrix[i][j] += min(matrix[i-1][j],min(l,r));
             }
-            prev = curr;
         }
-        return mini;
+
+        for(int i=0;i<n;i++) m = min(m,matrix[n-1][i]);
+        return m;
     }
 };
