@@ -1,12 +1,13 @@
 class Solution {
 public:
 
-    Solution(){
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
-    }
+    // Solution(){
+    //     ios_base::sync_with_stdio(false);
+    //     cin.tie(NULL);
+    //     cout.tie(NULL);
+    // }
     int minFallingPathSum(vector<vector<int>>& matrix) {
+        ios_base::sync_with_stdio(false);
         int m = 1e9;
         int n = matrix.size();
         for(int i=1;i<n;i++){
