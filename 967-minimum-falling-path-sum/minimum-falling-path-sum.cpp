@@ -7,17 +7,16 @@ public:
         vector<int> prev(n,0);
         vector<int> curr(n,0);
         int mini = INT_MAX;
-
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
+                curr[j] = matrix[i][j];
                 if(i==0){
-                    curr[j] = matrix[i][j];
                 }else if(j==0){
-                    curr[j] = matrix[i][j] + min(prev[j],prev[j+1]);
+                    curr[j] += min(prev[j],prev[j+1]);
                 }else if(j==n-1){
-                    curr[j] = matrix[i][j] + min(prev[j-1],prev[j]);
+                    curr[j] += min(prev[j-1],prev[j]);
                 }else{
-                    curr[j] = matrix[i][j] + min(min(prev[j-1],prev[j]),prev[j+1]);
+                    curr[j] += min(min(prev[j-1],prev[j]),prev[j+1]);
                 }
 
                 if(i==m-1){
