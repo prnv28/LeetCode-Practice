@@ -1,6 +1,9 @@
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+
+        ios_base::sync_with_stdio(0);
+        
         if (obstacleGrid.empty() || obstacleGrid[0].empty() || obstacleGrid[0][0] == 1) {
             return 0;
         }
