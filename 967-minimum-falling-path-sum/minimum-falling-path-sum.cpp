@@ -8,7 +8,6 @@ public:
     // }
     int minFallingPathSum(vector<vector<int>>& matrix) {
         ios_base::sync_with_stdio(false);
-        int m = 1e9;
         int n = matrix.size();
         for(int i=1;i<n;i++){
             for(int j=0;j<n;j++){
@@ -18,7 +17,6 @@ public:
             }
         }
 
-        for(int i=0;i<n;i++) m = min(m,matrix[n-1][i]);
-        return m;
+        return *min_element(matrix.back().begin(), matrix.back().end());
     }
 };
