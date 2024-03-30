@@ -5,13 +5,13 @@ public:
         cin.tie(NULL);
         cout.tie(NULL);
         int n = nums.size();
-        int arr[n];
+        int temp;
         int min_len = INT_MAX;
         for(int i=0;i<n;i++){
             for(int j=i;j<n;j++){
-                if(j==i) arr[j] = nums[j];
-                else arr[j] = nums[j] | arr[j-1];
-                if(arr[j]>=k) min_len = min(min_len,j-i+1); 
+                if(j==i) temp = nums[j];
+                else temp = nums[j] | temp;
+                if(temp>=k) min_len = min(min_len,j-i+1); 
             }
         }
         
