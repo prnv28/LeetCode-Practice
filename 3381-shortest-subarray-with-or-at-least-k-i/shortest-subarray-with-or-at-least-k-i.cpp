@@ -6,9 +6,10 @@ public:
         cout.tie(NULL);
         int n = nums.size();
         int min_len = INT_MAX;
+        int temp = 0;
         for(int i=0;i<n;i++){
             for(int j=i;j<n;j++){
-                int temp = (i==j)?nums[j]:(nums[j] | temp);
+                temp = (i==j)?nums[j]:(nums[j] | temp);
                 if(temp>=k) min_len = min(min_len,j-i+1); 
             }
         }
