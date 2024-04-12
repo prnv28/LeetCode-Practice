@@ -18,7 +18,7 @@ public:
             total += nums[i];
         }
         if(total%2) return false;
-        vector<vector<int>> dp(n,vector<int> ((total/2)+1,0));
+        // vector<vector<int>> dp(n,vector<int> ((total/2)+1,0));
         vector<int> curr((total/2)+1,0);
         vector<int> prev((total/2)+1,0);
 
