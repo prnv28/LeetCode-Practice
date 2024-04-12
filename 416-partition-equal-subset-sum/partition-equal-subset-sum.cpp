@@ -20,9 +20,9 @@ public:
         if(total%2) return false;
        
         vector<int> prev((total/2)+1,0);
-
+        vector<int> curr((total/2)+1,0);
         for(int i=0;i<n;i++){
-             vector<int> curr((total/2)+1,0);
+             
             for(int j=0;j<=total/2;j++){
                 if(i==0){
                     curr[j] = (j==nums[i]);
