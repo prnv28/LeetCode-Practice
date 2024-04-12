@@ -19,22 +19,25 @@ public:
         }
         if(total%2) return false;
         vector<vector<int>> dp(n,vector<int> ((total/2)+1,0));
+        vector<int> curr((total/2)+1,0);
+        vector<int> prev((total/2)+1,0);
 
         for(int i=0;i<n;i++){
             for(int j=0;j<=total/2;j++){
                 if(i==0){
-                    dp[i][j] = (j==nums[i]);
+                    curr[j] = (j==nums[i]);
                 }else{
-                    int not_take = dp[i-1][j];
+                    int not_take = prev[j];
                     int take = false;
                     if(j>=nums[i]){
-                        take = dp[i-1][j-nums[i]];
+                        take = prev[j-nums[i]];
                     }
-                    dp[i][j] = take || not_take;
+                    curr[j] = take || not_take;
                 }
             }
+            prev = curr;
         }
-        return dp[n-1][total/2];
+        return prev[total/2];
         // return algo(n-1,total/2,nums,dp);
     }
 };
