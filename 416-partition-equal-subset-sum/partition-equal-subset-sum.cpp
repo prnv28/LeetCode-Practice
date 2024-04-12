@@ -12,10 +12,12 @@ public:
         return dp[i][sum] = take||not_take;
     }
     bool canPartition(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         int n = nums.size();
         int total = accumulate(nums.begin(),nums.end(),0);
         if(total%2) return false;
-
         vector<int> curr((total/2)+1,0);
         vector<int> prev((total/2)+1,0);
 
