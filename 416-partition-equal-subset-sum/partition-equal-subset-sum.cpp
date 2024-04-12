@@ -12,13 +12,10 @@ public:
         return dp[i][sum] = take||not_take;
     }
     bool canPartition(vector<int>& nums) {
-        int total = 0;
         int n = nums.size();
-        for(int i=0;i<n;i++){
-            total += nums[i];
-        }
+        int total = accumulate(nums.begin(),nums.end(),0);
         if(total%2) return false;
-        // vector<vector<int>> dp(n,vector<int> ((total/2)+1,0));
+
         vector<int> curr((total/2)+1,0);
         vector<int> prev((total/2)+1,0);
 
@@ -38,6 +35,5 @@ public:
             prev = curr;
         }
         return prev[total/2];
-        // return algo(n-1,total/2,nums,dp);
     }
 };
