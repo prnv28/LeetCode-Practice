@@ -15,6 +15,7 @@ public:
                 }
             }
             solution.push_back(temp);
+            temp.clear();
         }
         return solution;
     }
