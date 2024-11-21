@@ -20,8 +20,6 @@ public:
                 }
             }
         }
-        
         reverse(nums.begin(),nums.end());
-    
     }
 };
