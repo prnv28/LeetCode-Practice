@@ -12,7 +12,9 @@ class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
 
-
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
         ListNode* slow = head;
         ListNode* fast = head;
 
