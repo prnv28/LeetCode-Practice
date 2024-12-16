@@ -9,9 +9,9 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
+        // ios_base::sync_with_stdio(false);
+        // cin.tie(NULL);
+        // cout.tie(NULL);
         while(node==nullptr || node->next==nullptr) return;
         node->val=node->next->val;
         ListNode* temp = node->next;
