@@ -16,15 +16,12 @@ public:
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
 
-        ListNode* curr = head;
-        ListNode* prv = NULL;
+        if(!head || !head->next) return head;
+        ListNode* newHead = reverseList(head->next);
+        ListNode* nxt = head->next;
+        nxt->next = head;
+        head->next = NULL;
+        return newHead;
         
-        while(curr!=NULL){
-            ListNode* nxt = curr->next;
-            curr->next = prv;
-            prv = curr;
-            curr = nxt;
-        }
-        return prv;
     }
 };
