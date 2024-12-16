@@ -12,9 +12,10 @@ public:
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
         cout.tie(NULL);
-        node->val = node->next->val;
+        while(node==nullptr || node->next==nullptr) return;
+        node->val=node->next->val;
         ListNode* temp = node->next;
-        node->next = temp->next;
-        delete(temp);
+        node->next=node->next->next;
+        delete temp;
     }
 };
