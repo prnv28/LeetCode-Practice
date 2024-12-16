@@ -12,12 +12,14 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         if(!head || !head->next) return head;
         ListNode* curr = head;
         ListNode* prv = NULL;
-        ListNode* nxt = NULL;
         while(curr!=NULL){
-            nxt = curr->next;
+            ListNode* nxt = curr->next;
             curr->next = prv;
             prv = curr;
             curr = nxt;
