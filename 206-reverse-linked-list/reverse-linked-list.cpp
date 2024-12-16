@@ -8,22 +8,23 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+//  N1(head) -> N2 -> N3 -> null
+//  N1(head)  N2 -> N3 -> null
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-
-        // ios_base::sync_with_stdio(false);
-        // cin.tie(NULL);
-
-        ListNode* prev = NULL;
+        if(!head || !head->next) return head;
         ListNode* curr = head;
-    
-        while(curr){
-            ListNode* nxt = curr->next;
-            curr->next=prev;
-            prev = curr;
+        ListNode* prv = NULL;
+        ListNode* nxt = NULL;
+        while(curr!=NULL){
+            nxt = curr->next;
+            curr->next = prv;
+            prv = curr;
             curr = nxt;
         }
-        return prev;
+        return prv;
     }
 };
