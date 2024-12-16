@@ -14,8 +14,8 @@ public:
     ListNode* reverseList(ListNode* head) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
-        
-        if(!head || !head->next) return head;
+
+        // if(!head || !head->next) return head;
         ListNode* curr = head;
         ListNode* prv = NULL;
         while(curr!=NULL){
