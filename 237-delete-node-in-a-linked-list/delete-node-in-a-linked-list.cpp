@@ -11,6 +11,7 @@ public:
     void deleteNode(ListNode* node) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
+        cout.tie(NULL);
         node->val = node->next->val;
         ListNode* temp = node->next;
         node->next = temp->next;
