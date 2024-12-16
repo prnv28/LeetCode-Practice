@@ -9,9 +9,6 @@
  * };
  */
 
-//  N1(head) -> N2 -> N3 -> null
-//  N1(head)  N2 -> N3 -> null
-
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
