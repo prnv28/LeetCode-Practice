@@ -7,11 +7,11 @@ public:
     int maxProfit(vector<int>& prices) {
         // return algo(0,INT_MAX,prices);
         int min_prices = INT_MAX;
-        int max_profit = INT_MIN;
+        int max_profit = 0;
         for(int i=0;i<prices.size();i++){
             max_profit = max(prices[i]-min_prices,max_profit);
             min_prices = min(min_prices,prices[i]);
         }
-        return max_profit>=0?max_profit:0;
+        return max_profit;
     }
 };
