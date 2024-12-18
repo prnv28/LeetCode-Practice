@@ -6,6 +6,8 @@ public:
     }
     int maxProfit(vector<int>& prices) {
         // return algo(0,INT_MAX,prices);
+        std::ios::sync_with_stdio(0);
+        std::cin.tie(0);
         int min_prices = INT_MAX;
         int max_profit = 0;
         for(int i=0;i<prices.size();i++){
