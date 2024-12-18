@@ -9,8 +9,8 @@ public:
         int min_prices = INT_MAX;
         int max_profit = 0;
         for(int i=0;i<prices.size();i++){
-            max_profit = max(prices[i]-min_prices,max_profit);
             min_prices = min(min_prices,prices[i]);
+            max_profit = max(prices[i]-min_prices,max_profit);
         }
         return max_profit;
     }
