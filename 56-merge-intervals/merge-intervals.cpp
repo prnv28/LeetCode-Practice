@@ -7,6 +7,9 @@ public:
         cout<<endl;
     }
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         sort(intervals.begin(),intervals.end());
         vector<vector<int>> result;
         result.push_back(intervals[0]);
