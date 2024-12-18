@@ -14,10 +14,8 @@ public:
         vector<vector<int>> result;
         result.push_back(intervals[0]);
         for(int i=1;i<intervals.size();i++){
-            vector<int> tmp = result.back();
-            if(tmp[1]>=intervals[i][0]){
-                result.pop_back();
-                result.push_back({tmp[0],max(tmp[1],intervals[i][1])});
+            if(result.back()[1]>=intervals[i][0]){
+                result.back()[1] = max(result.back()[1],intervals[i][1]);
             }else{
                 result.push_back(intervals[i]);
             }
