@@ -10,6 +10,11 @@
  */
 class Solution {
 public:
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         if(list1==NULL) return list2;
         if(list2==NULL) return list1;
