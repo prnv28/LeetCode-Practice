@@ -1,5 +1,10 @@
 class Solution {
 public:
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     int waysToSplitArray(vector<int>& nums) {
         vector<long> prefixSum(nums.size(),0);
         long total = 0;
