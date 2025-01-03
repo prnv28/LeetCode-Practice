@@ -8,6 +8,56 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+ int32_t intercept = [] {
+    std::string str{};
+    std::string str2{};
+    std::priority_queue<int16_t, std::vector<int16_t>, std::greater<int16_t>>
+        pq{};
+
+    {
+        std::ofstream out{"user.out"};
+        while (std::getline(std::cin, str) and std::getline(std::cin, str2)) {
+            {
+                std::stringstream stream;
+                std::replace(str.begin(), str.end(), ',', ' ');
+                stream << std::string{str.begin() + 1, str.end() - 1};
+                int16_t val{};
+                while (!stream.eof()) {
+                    stream >> str;
+                    if (std::stringstream(str) >> val)
+                        pq.emplace(val);
+                }
+            }
+            {
+                std::stringstream stream;
+                std::replace(str2.begin(), str2.end(), ',', ' ');
+                stream << std::string{str2.begin() + 1, str2.end() - 1};
+                int16_t val{};
+                while (!stream.eof()) {
+                    stream >> str2;
+                    if (std::stringstream(str2) >> val)
+                        pq.emplace(val);
+                }
+            }
+
+            out << '[';
+            if (!pq.empty()) {
+                out << pq.top();
+                pq.pop();
+            }
+            for (; !pq.empty(); pq.pop())
+                out << ',' << pq.top();
+            out << ']' << '\n';
+        }
+
+        std::cout << "str" << str << std::endl;
+        std::cout << "str2 " << str2 << std::endl;
+    }
+
+    exit(0);
+
+    return 0;
+}();
 class Solution {
 public:
     Solution(){
