@@ -95,32 +95,24 @@ Node* buildTree(string str)
 
 class Solution {
   public:
+   void algo(Node* root, int level,int depth, map<int,pair<Node*,int>>& mp){
+        if(root==NULL) return;
+        
+        if(mp.find(level)==mp.end() || depth>=mp[level].second){
+            mp[level] = {root,depth};
+        }
+        
+        algo(root->left,level-1,depth+1,mp);
+        algo(root->right,level+1,depth+1,mp);
+    }
     vector <int> bottomView(Node *root) {
-       map<int,int> mp;
-       vector<int> result;
-       queue<pair<Node*, int>> q;
-       q.push({root,0});
-       while(!q.empty()){
-           pair<Node*,int> p = q.front();
-           q.pop();
-           
-           Node* node = p.first;
-           int line = p.second;
-           
-           mp[line] = node->data;
-           
-           if(node->left){
-               q.push({node->left,line-1});
-           }
-           if(node->right){
-               q.push({node->right,line+1});
-           }
-       }
-       
-       for(auto itr : mp){
-           result.push_back(itr.second);
-       }
-       return result;
+        map<int,pair<Node*,int>> mp;
+        algo(root,0,0,mp);
+        vector<int> result;
+        for(auto itr : mp){
+            result.push_back(itr.second.first->data);
+        }
+        return result;
         
     }
 };
