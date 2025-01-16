@@ -21,15 +21,13 @@ public:
 
         k = k%length;
         tmp->next = head;
-        ListNode* prev = NULL;
-        int i=0;
-        while(i<length-k){
-            i++;
-            prev = head;
-            head = head->next;
+        int end = length-k;
+        while(end--){
+            tmp = tmp->next;
         }
 
-        prev->next = NULL;
+        head = tmp->next;
+        tmp->next = NULL;
         return head;
     }
 };
