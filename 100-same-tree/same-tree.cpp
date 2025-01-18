@@ -13,10 +13,8 @@ class Solution {
 public:
     bool algo(TreeNode* p ,TreeNode* q){
         if(p==NULL && q==NULL) return true;
-        else if(p==NULL && q!=NULL) return false;
-        else if(p!=NULL && q==NULL) return false;
-        if(p->val!=q->val) return false;
-        return algo(p->left,q->left) && algo(p->right,q->right);
+        else if(p==NULL || q==NULL) return false;
+        return (p->val==q->val) && algo(p->left,q->left) && algo(p->right,q->right);
 
     }
     bool isSameTree(TreeNode* p, TreeNode* q) {
