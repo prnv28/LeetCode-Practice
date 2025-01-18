@@ -11,22 +11,16 @@
  */
 class Solution {
 public:
-    int algo(TreeNode* root,bool& flag){
+    int algo(TreeNode* root){
         if(!root) return 0;
-
-        int left = algo(root->left,flag);
-        int right = algo(root->right,flag);
-
-        if(abs(left-right)>1){
-            flag = false;
-            return 0;
+        int left = algo(root->left);
+        int right = algo(root->right);
+        if(left==-1 || right==-1 || abs(left-right)>1){
+            return -1;
         }
-
         return 1 + max(left,right);
     }
     bool isBalanced(TreeNode* root) {
-        bool flag = true;
-        algo(root,flag);
-        return flag;
+        return algo(root)!=-1;
     }
 };
