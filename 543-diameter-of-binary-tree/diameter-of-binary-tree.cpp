@@ -13,13 +13,10 @@ class Solution {
 public:
     int algo(TreeNode* root,int& diameter){
         if(!root) return 0;
-        int left = 0, right = 0;
-        if(root->left)
-            left = 1 + algo(root->left,diameter);
-        if(root->right)
-            right = 1 + algo(root->right,diameter);
+        int left = algo(root->left,diameter);
+        int right = algo(root->right,diameter);
         diameter = max(diameter,left+right);
-        return max(left,right);
+        return 1 + max(left,right);
     }
     int diameterOfBinaryTree(TreeNode* root) {
         int diameter = 0;
