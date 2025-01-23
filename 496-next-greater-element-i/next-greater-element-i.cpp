@@ -7,14 +7,13 @@ public:
         for(int i=n-1;i>=0;i--){
             if(!s.empty() && s.top()>nums2[i]){
                 mp[nums2[i]] = s.top();
-                s.push(nums2[i]);
             }else{
                 while(!s.empty() && s.top()<=nums2[i]){
                     s.pop();
                 }
                 mp[nums2[i]] = s.empty()?-1:s.top();
-                s.push(nums2[i]);
             }
+            s.push(nums2[i]);
         }
        
         n = nums1.size();
