@@ -12,13 +12,8 @@ public:
                 while(!s.empty() && s.top()<=nums2[i]){
                     s.pop();
                 }
-                if(s.empty()){
-                    mp[nums2[i]] = -1;
-                    s.push(nums2[i]);
-                }else{
-                    mp[nums2[i]] = s.top();
-                    s.push(nums2[i]);
-                }
+                mp[nums2[i]] = s.empty()?-1:s.top();
+                s.push(nums2[i]);
             }
         }
        
