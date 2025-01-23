@@ -15,7 +15,7 @@ public:
         
         vector<vector<int>> result;
         if(!root) return result;
-        
+
         queue<TreeNode*> q;
         q.push(root);
 
@@ -42,7 +42,7 @@ public:
             }
             leftToRight = !leftToRight;
             result.push_back(tmp);
-            // tmp.clear();
+            tmp.clear();
         }
         return result;
     }
