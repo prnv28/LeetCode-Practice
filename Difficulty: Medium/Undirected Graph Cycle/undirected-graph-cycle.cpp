@@ -7,31 +7,61 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
+    bool detectBFSCycle(int i,int parent, vector<vector<int>>& adj,vector<bool>& visited){
+        visited[i] = true;
+        
+        for(int node : adj[i]){
+            if(!visited[node]){
+                if(detectBFSCycle(node,i,adj,visited)){
+                    return true;
+                }
+            }else if(node!=parent){
+                return true;
+            }
+        }
+        return false;
+    }
+    // bool isCycle(vector<vector<int>>& adj) {
+    //     int n = adj.size();
+    //     vector<bool> visited(n,false);
+        
+    //     for(int i=0;i<n;i++){
+    //         if(!visited[i]){
+    //             if(detectBFSCycle(i,-1,adj,visited)){
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+        
+    // }
+    bool detectDFSCycle(int src, int parent,vector<vector<int>>& adj, vector<bool>& visited){
+        visited[src] = true;
+        for(int i: adj[src]){
+            if(!visited[i]){
+                if(detectDFSCycle(i,src,adj,visited)){
+                    return true;
+                }
+            }else if(parent!=i){
+                return true;
+            }
+            
+            
+        }
+        return false;
+    }
     bool isCycle(vector<vector<int>>& adj) {
-        queue<pair<int,int>> q;
         int n = adj.size();
         vector<bool> visited(n,false);
         for(int i=0;i<n;i++){
-            q.push({i,-1});
-            while(!q.empty()){
-                int parent = q.front().second;
-                int node = q.front().first;
-                q.pop();
-                if(!visited[node]){
-                    visited[node] = true;
-                    for(int i=0;i<adj[node].size();i++){
-                        int child = adj[node][i];
-                        if(!visited[child]){
-                            q.push({child,node});
-                        }else if(child!=parent){
-                            return true;
-                        }
-                    }
+            if(!visited[i]){
+                if(detectDFSCycle(i,-1,adj,visited)){
+                    return true;
                 }
             }
         }
-        
         return false;
+        
     }
 };
 
