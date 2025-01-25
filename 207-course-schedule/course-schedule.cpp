@@ -23,7 +23,7 @@ public:
         }
 
         string mode = "DFS";
-        // mode = "BFS";
+        mode = "BFS";
 
         if(mode=="BFS"){
             queue<int> q;
