@@ -16,23 +16,57 @@ class Solution {
         }
         st.push(src);
     }
+    
     vector<int> topologicalSort(vector<vector<int>>& adj) {
+        string mode = "DFS";
+        mode = "BFS";
+        vector<int> result;
         int n = adj.size();
-        vector<bool> visited(n,false);
-        stack<int> st;
-        
-        for(int i=0;i<n;i++){
-            if(!visited[i]){
-                dfs(i,adj,visited,st);
+        if(mode=="DFS"){
+            vector<bool> visited(n,false);
+            stack<int> st;
+            
+            for(int i=0;i<n;i++){
+                if(!visited[i]){
+                    dfs(i,adj,visited,st);
+                }
+            }
+            
+            while(!st.empty()){
+                result.push_back(st.top());
+                st.pop();
+            }
+        }else{
+            vector<int> indegree(n,0);
+            queue<int> q;
+            
+            for(int i=0;i<n;i++){
+                for(int it : adj[i]){
+                    indegree[it]++;
+                }
+            }
+            
+            for(int i=0;i<n;i++){
+                if(indegree[i]==0){
+                    q.push(i);
+                }
+            }
+            
+            while(!q.empty()){
+                int node = q.front();
+                q.pop();
+                result.push_back(node);
+                
+                for(int it : adj[node]){
+                    indegree[it]--;
+                    if(indegree[it]==0){
+                        q.push(it);
+                    }
+                }
             }
         }
-        
-        vector<int> result;
-        while(!st.empty()){
-            result.push_back(st.top());
-            st.pop();
-        }
         return result;
+        
     }
 };
 
