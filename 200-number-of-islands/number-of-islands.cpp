@@ -6,21 +6,21 @@ public:
         }
         return false;
     }
-    void bfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
+    void dfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
         if(grid[i][j]=='1' && !visited[i][j]){
             visited[i][j] = 1;
             if(j+1)
             if(valid(i,j+1,m,n)){
-                bfs(i,j+1,m,n,grid,visited);
+                dfs(i,j+1,m,n,grid,visited);
             }
             if(valid(i,j-1,m,n)){
-                bfs(i,j-1,m,n,grid,visited);
+                dfs(i,j-1,m,n,grid,visited);
             }
             if(valid(i+1,j,m,n)){
-                bfs(i+1,j,m,n,grid,visited);
+                dfs(i+1,j,m,n,grid,visited);
             }
             if(valid(i-1,j,m,n)){
-                bfs(i-1,j,m,n,grid,visited);
+                dfs(i-1,j,m,n,grid,visited);
             }
         }
     }
@@ -34,7 +34,7 @@ public:
                 if(!visited[i][j]){
                     if(grid[i][j]=='1'){
                         count++;
-                        bfs(i,j,m,n,grid,visited);
+                        dfs(i,j,m,n,grid,visited);
                     }
                 }
             }
