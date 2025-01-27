@@ -34,13 +34,22 @@ public:
         return true;
     }
     bool isBipartite(vector<vector<int>>& graph) {
+        string mode = "DFS";
+        mode = "BFS";
         int n = graph.size();
         vector<int> clr(n,-1);
         for(int i=0;i<n;i++){
             if(clr[i]==-1){
-                if(!dfs(i,0,graph,clr)){
-                    return false;
+                if(mode=="BFS"){
+                    if(!bfs(i,graph,clr)){
+                        return false;
+                    }
+                }else{
+                    if(!dfs(i,0,graph,clr)){
+                        return false;
+                    }
                 }
+               
             }
         }
         
