@@ -53,7 +53,7 @@ public:
     }
     int numIslands(vector<vector<char>>& grid) {
         string mode = "DFS";
-        mode = "BFS";
+        // mode = "BFS";
         int m = grid.size();
         int n = grid[0].size();
         vector<vector<int>> visited(m,vector<int>(n,0));
