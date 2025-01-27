@@ -52,6 +52,8 @@ public:
         }
     }
     int numIslands(vector<vector<char>>& grid) {
+        string mode = "DFS";
+        mode = "BFS";
         int m = grid.size();
         int n = grid[0].size();
         vector<vector<int>> visited(m,vector<int>(n,0));
@@ -60,7 +62,12 @@ public:
             for(int j=0;j<n;j++){
                 if(!visited[i][j] && grid[i][j]=='1'){
                     count++;
-                    bfs(i,j,m,n,grid,visited);
+                    if(mode=="BFS"){
+                        bfs(i,j,m,n,grid,visited);
+                    }else{
+                        dfs(i,j,m,n,grid,visited);
+                    }
+                    
                 }
             }
         }
