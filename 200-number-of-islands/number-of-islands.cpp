@@ -9,7 +9,6 @@ public:
     void dfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
         if(grid[i][j]=='1' && !visited[i][j]){
             visited[i][j] = 1;
-            if(j+1)
             if(valid(i,j+1,m,n)){
                 dfs(i,j+1,m,n,grid,visited);
             }
@@ -21,6 +20,19 @@ public:
             }
             if(valid(i-1,j,m,n)){
                 dfs(i-1,j,m,n,grid,visited);
+            }
+        }
+    }
+    void bfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
+        queue<pair<int,int>> q;
+        q.push({i,j});
+
+        while(!q.empty()){
+            int row = q.front().first;
+            int column = q.front().second;
+            if(grid[row][column]=='1' && !visited[row][column]){
+                visited[row][column] = 1;
+
             }
         }
     }
