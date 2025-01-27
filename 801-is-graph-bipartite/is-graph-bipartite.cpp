@@ -18,12 +18,27 @@ public:
         }
         return true;
     }
+    bool dfs(int src,int color,vector<vector<int>>& graph, vector<int>& clr){
+        if(clr[src]==-1){
+            clr[src] = color;
+            for(int it : graph[src]){
+                if(clr[it]==-1){
+                    if(!dfs(it,1-color,graph,clr)){
+                        return false;
+                    }
+                }else if(clr[it]==color){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int> clr(n,-1);
         for(int i=0;i<n;i++){
             if(clr[i]==-1){
-                if(!bfs(i,graph,clr)){
+                if(!dfs(i,0,graph,clr)){
                     return false;
                 }
             }
