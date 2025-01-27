@@ -30,9 +30,24 @@ public:
         while(!q.empty()){
             int row = q.front().first;
             int column = q.front().second;
+            q.pop();
             if(grid[row][column]=='1' && !visited[row][column]){
                 visited[row][column] = 1;
+                if(valid(row,column-1,m,n)){
+                    q.push({row,column-1});
+                }
 
+                if(valid(row,column+1,m,n)){
+                    q.push({row,column+1});
+                }
+
+                if(valid(row-1,column,m,n)){
+                    q.push({row-1,column});
+                }
+
+                if(valid(row+1,column,m,n)){
+                    q.push({row+1,column});
+                }
             }
         }
     }
@@ -43,11 +58,9 @@ public:
         int count = 0;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(!visited[i][j]){
-                    if(grid[i][j]=='1'){
-                        count++;
-                        dfs(i,j,m,n,grid,visited);
-                    }
+                if(!visited[i][j] && grid[i][j]=='1'){
+                    count++;
+                    bfs(i,j,m,n,grid,visited);
                 }
             }
         }
