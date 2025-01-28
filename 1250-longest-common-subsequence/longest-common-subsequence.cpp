@@ -11,18 +11,20 @@ public:
     int longestCommonSubsequence(string text1, string text2) {
         int len1 = text1.size();
         int len2 = text2.size();
-        vector<vector<int>> dp(len1+1, vector<int> (len2 + 1 , 0));
-
+        // vector<vector<int>> dp(len1+1, vector<int> (len2 + 1 , 0));
+        vector<int> cur(len2 + 1 , 0), prev(len2+1,0);
+        string s = "";
         for(int i=0;i<len1;i++){
             for(int j=0;j<len2;j++){
                 if(text1[i]==text2[j]){
-                    dp[i+1][j+1] = 1 + dp[i][j]; 
+                    cur[j+1] = 1 + prev[j]; 
+                    s+=text1[i];
                 }else{
-                    dp[i+1][j+1] = max(dp[i][j+1],dp[i+1][j]);
+                    cur[j+1] = max(prev[j+1],cur[j]);
                 }
             }
+            prev = cur;
         }
-        // printVoV(dp);
-        return dp[len1][len2];
+        return cur[len2];
     }
 };
