@@ -12,7 +12,6 @@ public:
         for(int i=1;i<n;i++){
             // printV(nums);
             if(nums[i]>nums[low]){
-                cout<<nums[low]<<" : "<<nums[i]<<endl;
                 nums[++low] = nums[i];
             }
         }
