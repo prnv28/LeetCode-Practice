@@ -8,11 +8,9 @@ public:
         int last = (m*n) - 1;
         while(first<=last){
             int mid = (first+last)/2;
-            int i = mid/n;
-            int j = mid%n;
-            if(matrix[i][j]<target){
+            if(matrix[mid/n][mid%n]<target){
                 first = mid+1;
-            }else if(matrix[i][j]>target){
+            }else if(matrix[mid/n][mid%n]>target){
                 last = mid-1;
             }else{
                 return true;
