@@ -10,7 +10,6 @@ public:
             int mid = (first+last)/2;
             int i = mid/n;
             int j = mid%n;
-            // cout<<mid<<" : "<<i<<" : "<<j<<endl;
             if(matrix[i][j]<target){
                 first = mid+1;
             }else if(matrix[i][j]>target){
