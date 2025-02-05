@@ -10,9 +10,7 @@ public:
             if(nums[i]==x+1){
                 x++;
                 cnt++;
-            }else if(nums[i]==x){
-                
-            }else{
+            }else if(nums[i]!=x){
                 x = nums[i];
                 cnt = 1;
             }
