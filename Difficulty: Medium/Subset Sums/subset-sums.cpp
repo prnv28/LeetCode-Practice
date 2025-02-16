@@ -13,8 +13,6 @@ class Solution {
         }
         algo(i-1,arr,result,arr[i]+sum);
         algo(i-1,arr,result,sum);
-
-        
     }
     vector<int> subsetSums(vector<int>& arr) {
         vector<int> result;
