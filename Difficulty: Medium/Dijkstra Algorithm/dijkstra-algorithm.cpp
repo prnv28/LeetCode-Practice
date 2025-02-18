@@ -12,13 +12,12 @@ class Solution {
     vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int src) {
         int V = adj.size();
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
-        vector<int> dist(V+1,INT_MAX);
-        vector<int> prev(V+1,-1);
+        vector<int> dist(V,INT_MAX);
         dist[src] = 0;
-        q.push({src,0});
+        q.push({0,src});
         while(!q.empty()){
-            int u = q.top().first;
-            int dis = q.top().second;
+            int u = q.top().second;
+            int dis = q.top().first;
             q.pop();
             for(auto it : adj[u]){
                 int v = it.first;
@@ -26,8 +25,8 @@ class Solution {
                 
                 if(dis+edw <=dist[v]){
                     dist[v] = dis+edw;
-                    prev[v] = u;
-                    q.push({v,dis+edw});
+                    // prev[v] = u;
+                    q.push({dis+edw,v});
                 }
             }
         }
