@@ -6,10 +6,7 @@ public:
         for(int i=0;i<nums.size();i++){
             max_lat += nums[i];
             max_so_fat = max(max_so_fat,max_lat);
-            if(max_lat<0){
-                max_lat = 0;
-            }
-            
+            max_lat = max(0,max_lat);
         }   
         return max_so_fat;
     }
