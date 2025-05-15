@@ -10,16 +10,29 @@ public:
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
         cout.tie(NULL);
-        sort(intervals.begin(),intervals.end());
+        // sort(intervals.begin(),intervals.end());
+        // vector<vector<int>> result;
+        // result.push_back(intervals[0]);
+        // for(int i=1;i<intervals.size();i++){
+        //     if(result.back()[1]>=intervals[i][0]){
+        //         result.back()[1] = max(result.back()[1],intervals[i][1]);
+        //     }else{
+        //         result.push_back(intervals[i]);
+        //     }
+        // }
+        // return result;
         vector<vector<int>> result;
+        sort(intervals.begin(),intervals.end());
         result.push_back(intervals[0]);
         for(int i=1;i<intervals.size();i++){
             if(result.back()[1]>=intervals[i][0]){
-                result.back()[1] = max(result.back()[1],intervals[i][1]);
+                vector<int> tmp = {result.back()[0],max(result.back()[1],intervals[i][1])};
+                result.pop_back();
+                result.push_back(tmp);
             }else{
                 result.push_back(intervals[i]);
             }
         }
         return result;
-    }
+     }
 };
