@@ -6,8 +6,9 @@ public:
         cout.tie(NULL);
         unordered_map<int,int> mp;
         for(int i=0;i<nums.size();i++){
-            if(mp.find(target-nums[i])!=mp.end()){
-                return {mp[target-nums[i]],i};
+            int rem = target-nums[i];
+            if(mp.find(rem)!=mp.end()){
+                return {mp[rem],i};
             }
             mp[nums[i]] = i;
         }
