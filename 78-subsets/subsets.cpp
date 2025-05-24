@@ -2,7 +2,7 @@ class Solution {
 public:
     void algo(int i, vector<int>& nums, vector<int> ds, set<vector<int>>&res){
         if(i==nums.size()){
-            // sort(ds.begin(),ds.end());
+            sort(ds.begin(),ds.end());
             res.insert(ds);
             return;
         }
