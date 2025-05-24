@@ -12,6 +12,9 @@ public:
         algo(i+1,nums,ds,res);
     }
     vector<vector<int>> subsets(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         vector<vector<int>> ans;
         set<vector<int>> res;
         vector<int> ds;
