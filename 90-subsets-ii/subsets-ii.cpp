@@ -1,11 +1,11 @@
 class Solution {
 public:
-    void algo(int i,vector<int>& nums, vector<int>&ds, vector<vector<int>>& ans){
+    void algo(int ind, vector<int>& nums, vector<int>& ds, vector<vector<int>>& ans){
         ans.push_back(ds);
-        for(int ind = i;ind<nums.size();ind++){
-            if(i!=ind && nums[ind]==nums[ind-1]) continue;
-            ds.push_back(nums[ind]);
-            algo(ind+1, nums,ds,ans);
+        for(int i=ind;i<nums.size();i++){
+            if(i!=ind && nums[i]==nums[i-1]) continue;
+            ds.push_back(nums[i]);
+            algo(i+1,nums,ds,ans);
             ds.pop_back();
         }
     }
