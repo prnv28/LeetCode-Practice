@@ -20,6 +20,9 @@ public:
         }
     }
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         vector<vector<int>> result;
         vector<int> ds;
         set<vector<int>> s;
