@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void algo(int ind, vector<int>& nums,vector<int> ds, vector<vector<int>>& ans,int target){
+    void algo(int ind, vector<int>& nums,vector<int> &ds, vector<vector<int>>& ans,int target){
         if(ind==nums.size()){
             if(target==0){
                 ans.push_back(ds);
