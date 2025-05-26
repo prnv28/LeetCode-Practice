@@ -22,7 +22,7 @@ public:
         cout.tie(NULL);
         vector<vector<int>> ans;
         vector<int> ds;
-        // sort(nums.begin(),nums.end());
+        sort(nums.begin(),nums.end());
         algo(0,nums,ds,ans,target);
         return ans;
     }
