@@ -22,6 +22,9 @@ public:
         }
     }
     vector<vector<string>> partition(string s) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         vector<vector<string>> result;
         vector<string> ds;
         partitionHelper(0,s,ds,result);
