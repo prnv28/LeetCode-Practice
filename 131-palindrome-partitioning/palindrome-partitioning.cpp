@@ -9,13 +9,13 @@ public:
         return true;
     }
     void partitionHelper(int index, string& s, vector<string>& ds, vector<vector<string>>& result){
-        if(s.size()==index){
+        if(index==s.size()){
             result.push_back(ds);
             return;
         }
         for(int i=index;i<s.size();i++){
             if(isPallindrom(s,index,i)){
-                ds.push_back(s.substr(index, i - index + 1));
+                ds.push_back(s.substr(index,i-index+1));
                 partitionHelper(i+1,s,ds,result);
                 ds.pop_back();
             }
@@ -28,6 +28,6 @@ public:
         vector<vector<string>> result;
         vector<string> ds;
         partitionHelper(0,s,ds,result);
-        return result;
+        return result;   
     }
 };
