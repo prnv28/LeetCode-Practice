@@ -13,6 +13,9 @@ public:
         return;
     }
     vector<vector<int>> combinationSum(vector<int>& nums, int target) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         vector<vector<int>> ans;
         vector<int> ds;
         sort(nums.begin(),nums.end());
