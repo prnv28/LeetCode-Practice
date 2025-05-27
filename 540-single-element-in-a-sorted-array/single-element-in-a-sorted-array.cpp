@@ -1,6 +1,9 @@
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         int n = nums.size();
         if(n==1) return nums[0];
         if(nums[0]!=nums[1]) return nums[0];
