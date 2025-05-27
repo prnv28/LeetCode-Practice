@@ -9,13 +9,14 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        // ios_base::sync_with_stdio(false);
-        // cin.tie(NULL);
-        // cout.tie(NULL);
-        while(node==nullptr || node->next==nullptr) return;
-        node->val=node->next->val;
-        ListNode* temp = node->next;
-        node->next=node->next->next;
-        delete temp;
+        if(node->next!=NULL){
+            node->val = node->next->val;
+            ListNode* delNode = node->next;
+            node->next = node->next->next;
+            delete delNode;
+        }else{
+            delete node;
+        }
+        
     }
 };
