@@ -11,30 +11,19 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        cout.tie(nullptr);
-        ListNode* slow = head;
-        ListNode* fast = head;
-
+        if(!head) return head;
+        ListNode* temp1 = head;
         while(n--){
-            fast = fast->next;
+            temp1 = temp1->next;
         }
-        
-        if(fast==NULL){
-            return head->next;
-        }
+        if(temp1==NULL) return head->next;
 
-        while(fast->next!=NULL){
-            slow = slow->next;
-            fast = fast->next;
+        ListNode* temp2 = head;
+        while(temp1!=NULL && temp1->next!=NULL){
+            temp2 = temp2->next;
+            temp1 = temp1->next;
         }
-        
-        ListNode* delNode = slow->next;
-        slow->next = slow->next->next;
-        delete delNode;
+        if(temp2!=NULL && temp2->next!=NULL) temp2->next = temp2->next->next;
         return head;
-
     }
 };
