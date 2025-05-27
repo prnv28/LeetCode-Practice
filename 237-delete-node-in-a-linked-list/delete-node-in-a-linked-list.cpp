@@ -11,9 +11,9 @@ public:
     void deleteNode(ListNode* node) {
         if(node->next!=NULL){
             node->val = node->next->val;
-            ListNode* delNode = node->next;
+            // ListNode* delNode = node->next;
             node->next = node->next->next;
-            delete delNode;
+            // delete delNode;
         }else{
             delete node;
         }
