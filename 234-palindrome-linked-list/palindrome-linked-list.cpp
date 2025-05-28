@@ -10,13 +10,6 @@
  */
 class Solution {
 public:
-    void printLL(ListNode* head){
-        while(head!=NULL){
-            cout<<head->val<<" ";
-            head = head->next;
-        }
-        cout<<endl;
-    }
     ListNode* reverse(ListNode* head){
         ListNode* prev = NULL;
         ListNode* curr = head;
@@ -33,25 +26,18 @@ public:
 
         ListNode* slow = head;
         ListNode* fast = head;
-        while(fast!=NULL && fast->next!=NULL){
+        while(fast->next!=NULL && fast->next->next!=NULL){
             slow = slow->next;
             fast = fast->next->next;
         }
-        if(fast!=NULL){
-            ListNode* temp = slow;
-            slow = slow->next;
-            temp->next = NULL;
-        }
-        // printLL(head);
-        // printLL(slow);
-        slow = reverse(slow);
-        // printLL(slow);
-        while(slow!=NULL){
-            if(slow->val!=head->val){
+        
+        ListNode* temp = reverse(slow->next);
+        while(temp!=NULL && head!=NULL){
+            if(temp->val!=head->val){
                 return false;
             }
             head = head->next;
-            slow = slow->next;
+            temp = temp->next;
         }
         return true;
 
