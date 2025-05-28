@@ -23,17 +23,11 @@ public:
         if(!head) return head;
         ListNode* slow = head;
         ListNode* fast = head;
-        do{
+        while(fast!=NULL && fast->next!=NULL){
             slow = slow->next;
-            if(fast==NULL || fast->next==NULL) return false;
             fast = fast->next->next;
-            
-        }while(slow!=fast);
-        fast = head;
-        while(slow!=fast){
-            slow = slow->next;
-            fast = fast->next;
+            if(slow==fast) return true;
         }
-        return slow;
+        return false;
     }
 };
