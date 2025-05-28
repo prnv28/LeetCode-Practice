@@ -10,35 +10,50 @@
  */
 class Solution {
 public:
+    void printLL(ListNode* head){
+        while(head!=NULL){
+            cout<<head->val<<" ";
+            head = head->next;
+        }
+        cout<<endl;
+    }
     ListNode* reverse(ListNode* head){
         ListNode* prev = NULL;
         ListNode* curr = head;
-        ListNode* nxt = NULL;
-        while(curr){
-            nxt = curr->next;
-            curr->next = prev;
+        while(curr!=NULL){
+            ListNode* nxt = curr->next;
+            curr->next= prev;
             prev = curr;
             curr = nxt;
         }
         return prev;
     }
     bool isPalindrome(ListNode* head) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
+        if(!head || head->next==NULL) return true;
+
         ListNode* slow = head;
         ListNode* fast = head;
-        while(fast->next!=NULL && fast->next->next!=NULL){
+        while(fast!=NULL && fast->next!=NULL){
             slow = slow->next;
             fast = fast->next->next;
         }
-
-        ListNode* temp = reverse(slow->next);
-        while(temp!=NULL && head!=NULL){
-            if(temp->val!=head->val) return false;
-            temp = temp->next;
-            head = head->next; 
+        if(fast!=NULL){
+            ListNode* temp = slow;
+            slow = slow->next;
+            temp->next = NULL;
         }
-        return true;        
+        // printLL(head);
+        // printLL(slow);
+        slow = reverse(slow);
+        // printLL(slow);
+        while(slow!=NULL){
+            if(slow->val!=head->val){
+                return false;
+            }
+            head = head->next;
+            slow = slow->next;
+        }
+        return true;
+
     }
 };
