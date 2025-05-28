@@ -27,7 +27,6 @@ public:
             }
             int sum = (n1+n2+carry)%10;
             carry = (n1+n2+carry) / 10;
-            cout<<carry << " :: "<<sum<<endl;
             curr->next = new ListNode(sum);
             curr = curr->next;
         }
