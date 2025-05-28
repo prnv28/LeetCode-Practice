@@ -14,23 +14,19 @@ public:
         int carry = 0;
         ListNode* head = new ListNode();
         ListNode* curr = head;
-        while(l1!=NULL || l2!=NULL){
-            int n1 = 0;
-            int n2 = 0;
+        while(l1!=NULL || l2!=NULL || carry){
+            int sum = 0;
             if(l1!=NULL){
-                n1 = l1->val;
+                sum += l1->val;
                 l1 = l1->next;
             }
             if(l2!=NULL){
-                n2 = l2->val;
+                sum += l2->val;
                 l2 = l2->next;
             }
-            curr->next = new ListNode((n1+n2+carry)%10);
+            curr->next = new ListNode((sum+carry)%10);
             curr = curr->next;
-            carry = (n1+n2+carry) / 10;
-        }
-        if(carry>0){
-            curr->next = new ListNode(carry);
+            carry = (sum+carry) / 10;
         }
         return head->next;
     }
