@@ -25,10 +25,9 @@ public:
                 n2 = l2->val;
                 l2 = l2->next;
             }
-            int sum = (n1+n2+carry)%10;
-            carry = (n1+n2+carry) / 10;
-            curr->next = new ListNode(sum);
+            curr->next = new ListNode((n1+n2+carry)%10);
             curr = curr->next;
+            carry = (n1+n2+carry) / 10;
         }
         if(carry>0){
             curr->next = new ListNode(carry);
