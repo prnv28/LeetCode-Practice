@@ -9,16 +9,19 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
         ListNode* temp1 = headA;
         ListNode* temp2 = headB;
-
-        while(temp1 != temp2){
-            temp1 = temp1==NULL?headB:temp1->next;
-            temp2 = temp2==NULL?headA:temp2->next;
+        while(temp1!=temp2){
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+            if(temp1==NULL && temp2==NULL){
+                return NULL;
+            }else if(temp1==NULL){
+                temp1 = headB;
+            }else if(temp2==NULL){
+                temp2 = headA;
+            }
         }
-        return temp2;
+        return temp1;
     }
 };
