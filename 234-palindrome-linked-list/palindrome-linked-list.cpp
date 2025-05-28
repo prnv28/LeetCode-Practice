@@ -42,13 +42,13 @@ public:
             fast = fast->next->next;
         }
         
-        ListNode* temp = reverse(slow->next);
-        while(temp!=NULL && head!=NULL){
-            if(temp->val!=head->val){
+        slow = reverse(slow->next);
+        while(slow!=NULL && head!=NULL){
+            if(slow->val!=head->val){
                 return false;
             }
             head = head->next;
-            temp = temp->next;
+            slow = slow->next;
         }
         return true;
 
