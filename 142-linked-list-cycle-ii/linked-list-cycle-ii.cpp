@@ -9,27 +9,19 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
+        if(head==NULL || head->next==NULL) return NULL;
         ListNode* slow = head;
         ListNode* fast = head;
-
-        while(fast!=NULL && fast->next!=NULL){
-            slow = slow->next;
+        do{
+            slow = slow ->next;
             fast = fast->next->next;
-            if(slow==fast){
-                slow = head;
-                 while(slow!=fast){
-                    slow = slow->next;
-                    fast = fast->next;
-                }
-                return slow;
-            }
+            if(fast==NULL || fast->next==NULL) return NULL;
+        }while(slow!=fast);
+        fast = head;
+        while(slow!=fast){
+            slow = slow->next;
+            fast = fast->next;
         }
-       
-
-        return NULL;
+        return slow;
     }
 };
