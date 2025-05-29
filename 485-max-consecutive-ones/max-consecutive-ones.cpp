@@ -1,20 +1,16 @@
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
-        int maxi = 0;
-        int temp = 0;
-        for(int i : nums){
-            if(i==0){
-                temp = 0;
+        int max_so_far = 0;
+        int curr_max = 0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==1){
+                curr_max++;
             }else{
-                temp+=i;
-                maxi = max(maxi,temp);
+                curr_max = 0;
             }
+            max_so_far = max(max_so_far,curr_max);
         }
-        return maxi;
-        
+        return max_so_far;
     }
 };
