@@ -1,20 +1,12 @@
 class Solution {
 public:
-    void printV(vector<int>& V){
-        for(int v : V){
-            cout<<v<<" ";
-        }
-        cout<<endl;
-    } 
     int removeDuplicates(vector<int>& nums) {
-        int low = 0;
-        int n = nums.size();
-        for(int i=1;i<n;i++){
-            // printV(nums);
-            if(nums[i]>nums[low]){
-                nums[++low] = nums[i];
+        int start = 0;
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]!=nums[i-1]){
+                nums[++start] = nums[i];
             }
         }
-        return low+1;
+        return start+1;
     }
 };
