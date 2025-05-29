@@ -10,24 +10,42 @@
  */
 class Solution {
 public:
+    ListNode* reverse(ListNode* head){
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        while(curr!=NULL){
+            ListNode* nxt = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+        }
+        return prev;
+    }
     ListNode* rotateRight(ListNode* head, int k) {
-        if(head==NULL || head->next==NULL || k==0) return head;
-        int length = 1;
-        ListNode* tmp = head;
-        while(tmp->next!=NULL){
-            length++;
-            tmp = tmp->next;
+        if(!head) return head;
+        ListNode* temp = head;
+        int len = 0;
+        while(temp!=NULL){
+            len++;
+            temp = temp->next;
         }
-
-        k = k%length;
-        tmp->next = head;
-        int end = length-k;
-        while(end--){
-            tmp = tmp->next;
+        k = k%len;
+        if(k==0) return head;
+        head = reverse(head);
+        temp = head;
+        ListNode* prev = NULL;
+        while(k--){
+            prev = temp;
+            temp = temp->next;
         }
-
-        head = tmp->next;
-        tmp->next = NULL;
+        prev->next = NULL;
+        temp = reverse(temp);
+        head = reverse(head);
+        prev = head;
+        while(prev->next!=NULL){
+            prev = prev->next;
+        }
+        prev->next = temp;
         return head;
     }
 };
