@@ -11,15 +11,15 @@
  */
 class Solution {
 public:
-    void algo(TreeNode* root,vector<int>& result){
-        if(root==NULL) return;
-        result.push_back(root->val);
-        algo(root->left,result);
-        algo(root->right,result);
+    void algo(TreeNode* root, vector<int>& ans){
+        if(!root) return;
+        ans.push_back(root->val);
+        algo(root->left,ans);
+        algo(root->right,ans);
     }
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> result;
-        algo(root,result);
-        return result;
+        vector<int> ans;
+        algo(root,ans);
+        return ans;
     }
 };
