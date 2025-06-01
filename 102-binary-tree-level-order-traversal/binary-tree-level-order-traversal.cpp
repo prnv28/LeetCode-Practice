@@ -11,35 +11,24 @@
  */
 class Solution {
 public:
-    Solution(){
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
-    }
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> result;
-        if(root==NULL) return result;
-        
+        if(!root) return {};
+        vector<vector<int>> ans;
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty()){
             int n = q.size();
-            vector<int> lvl;
-            for(int i = 0;i<n;i++){
+            vector<int> temp(n);
+            for(int i=0;i<n;i++){
                 TreeNode* node = q.front();
                 q.pop();
-                lvl.push_back(node->val);
-                if(node->left!=NULL){
-                    q.push(node->left);
-                }
-                if(node->right!=NULL){
-                    q.push(node->right);
-                }
-                
+                temp[i] = node->val;
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
             }
-            result.push_back(lvl);            
+            ans.push_back(temp);
+            temp.clear();
         }
-        return result;
-        
+        return ans;
     }
 };
