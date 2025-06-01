@@ -18,7 +18,7 @@ public:
         if(left==-1 || right==-1 || abs(left-right)>1){
             return -1;
         }
-        return 1 + max(left,right);
+        return 1+max(left,right);
     }
     bool isBalanced(TreeNode* root) {
         return algo(root)!=-1;
