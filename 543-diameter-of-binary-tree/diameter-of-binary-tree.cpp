@@ -15,6 +15,8 @@ public:
         if(!root) return 0;
         int left = algo(root->left,diameter);
         int right = algo(root->right,diameter);
+        root->left=nullptr;
+        root->right=nullptr;
         diameter = max(diameter,left+right);
         return 1 + max(right,left);
     }
