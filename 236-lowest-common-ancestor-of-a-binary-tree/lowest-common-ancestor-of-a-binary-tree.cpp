@@ -9,18 +9,13 @@
  */
 class Solution {
 public:
-    Solution(){
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
-    }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-         if(root==NULL || root==p || root==q) return root;
-        
+        if(!root || root==p || root==q) return root;
         TreeNode* left = lowestCommonAncestor(root->left,p,q);
         TreeNode* right = lowestCommonAncestor(root->right,p,q);
         if(!left) return right;
         else if(!right) return left;
         else return root;
+        
     }
 };
