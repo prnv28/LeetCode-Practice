@@ -16,7 +16,11 @@ public:
 
 class Solution {
 public:
-
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     void printLL(Node* head){
         while(head){
             if(head->random){
