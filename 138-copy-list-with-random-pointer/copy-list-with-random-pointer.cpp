@@ -16,27 +16,60 @@ public:
 
 class Solution {
 public:
+
+    void printLL(Node* head){
+        while(head){
+            if(head->random){
+                cout<<head->val<<", Random :"<<head->random->val<<endl;
+            }else{
+                cout<<head->val<<endl;
+            }
+            head = head->next;
+        }
+        while(head){
+            cout<<head->val<<" ";
+            head = head->next;
+        }
+        cout<<endl;
+    }
     Node* copyRandomList(Node* head) {
-        unordered_map<Node*, Node*> mp;
+        if(!head) return head;
+        printLL(head);
         Node* tmp = head;
         while(tmp){
             Node* node = new Node(tmp->val);
-            mp[tmp] = node;
-            tmp = tmp->next;
+            node->next = tmp->next;
+            tmp->next = node;
+            tmp = node->next;
+        }
+        // printLL(head);
+
+        tmp = head;
+        Node* ans = tmp->next;
+        while(tmp){
+            Node* node = tmp->next;
+            Node* rndm = tmp->random;
+            Node* nxt = node->next;
+
+            if(rndm){
+                node->random = rndm->next;
+            }
+            tmp = nxt;
         }
 
         tmp = head;
         while(tmp){
-            Node* node = mp[tmp];
-            Node* nxt = tmp->next;
-            Node* rndm = tmp->random;
-            node->next = mp[nxt];
-            node->random = mp[rndm];
+            Node* node = tmp->next;
+            tmp->next = node->next;
+            if(node->next){
+                node->next = node->next->next;
+            }
             tmp = tmp->next;
         }
 
-        return mp[head];
-
+        // printLL(head);
+        // printLL(ans);
+        return ans;
 
     }
 };
