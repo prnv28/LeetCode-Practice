@@ -7,8 +7,8 @@ public:
     }
     int trap(vector<int>& height) {
         int n = height.size();
-        vector<int> leftMax(n,-1);
-        vector<int> rightMax(n,-1);
+        vector<int> leftMax(n,0);
+        vector<int> rightMax(n,0);
         int maxil = height[0];
         int maxir = height[n-1];
         leftMax[0] = maxil;
