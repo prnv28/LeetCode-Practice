@@ -1,31 +1,25 @@
 class Solution {
 public:
-    Solution(){
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        cout.tie(NULL);
-    }
-    int trap(vector<int>& height) {
-        int n = height.size();
-        vector<int> leftMax(n,0);
-        vector<int> rightMax(n,0);
-        int maxil = height[0];
-        int maxir = height[n-1];
-        leftMax[0] = maxil;
-        rightMax[n-1] = maxir;
-        for(int i=1;i<n;i++){
-            maxil = max(maxil,height[i]);
-            maxir = max(maxir,height[n-i-1]);
-            leftMax[i] = maxil;
-            rightMax[n-i-1] = maxir;
-        }
-        int total = 0;
-        for(int i=0;i<n;i++){
-            int thresold = min(leftMax[i],rightMax[i]);
-            if(thresold>height[i]){
-                total += thresold - height[i];
+    int trap(vector<int>& arr) {
+        int lmax=0, rmax=0,l=0,r=arr.size()-1,i=0,total=0;
+        while(l<r){
+            if(arr[r]>=arr[l]){
+                if(arr[l]<lmax){
+                    total += lmax-arr[l];
+                }else{
+                    lmax = arr[l];
+                }
+                l++;
+            }else{
+                if(arr[r]<rmax){
+                    total += rmax - arr[r];
+                }else{
+                    rmax = arr[r];
+                }
+                r--;
             }
         }
         return total;
+        
     }
 };
