@@ -5,7 +5,6 @@ public:
         vector<int> result(n,-1);
         stack<int> s;
         s.push(arr[n-1]);
-        mp[arr[n-1]] = -1;
         for(int i=n-2;i>=0;i--){
             if(!s.empty() && s.top()>arr[i]){
                 result[i]=s.top();
@@ -18,14 +17,19 @@ public:
                 }
             }
             s.push(arr[i]);
-            mp[arr[i]] = result[i];
+            if(mp.find(arr[i])!=mp.end()){
+                mp[arr[i]] = result[i];
+            }
         }
     }
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
         unordered_map<int,int> mp;
+        for(int i=0;i<n;i++){
+            mp[nums1[i]]=-1;
+        }
         nextLargerElement(nums2,mp);
         
-        int n = nums1.size();
         vector<int> result(n);
         for(int i=0;i<nums1.size();i++){
             result[i] = mp[nums1[i]];
