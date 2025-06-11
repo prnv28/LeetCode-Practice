@@ -5,21 +5,21 @@ public:
         stack<int> s;
         s.push(arr[n-1]);
         for(int i=n-2;i>=0;i--){
+            int ans = -1;
             if(!s.empty() && s.top()>arr[i]){
-                if(mp.find(arr[i])!=mp.end()){
-                    mp[arr[i]] = s.top();
-                }
+                ans = s.top();
             }else if(!s.empty() && s.top()<=arr[i]){
                 while(!s.empty() && s.top()<=arr[i]){
                     s.pop();
                 }
                 if(!s.empty()){
-                    if(mp.find(arr[i])!=mp.end()){
-                        mp[arr[i]] = s.top();
-                    }
+                    ans = s.top();
                 }
             }
             s.push(arr[i]);
+            if(mp.find(arr[i])!=mp.end()){
+                mp[arr[i]] = ans;
+            }
         }
     }
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
