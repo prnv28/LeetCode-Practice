@@ -2,24 +2,24 @@ class Solution {
 public:
     void nextLargerElement(vector<int>& arr,unordered_map<int,int> &mp) {
         int n=arr.size();
-        vector<int> result(n,-1);
         stack<int> s;
         s.push(arr[n-1]);
         for(int i=n-2;i>=0;i--){
             if(!s.empty() && s.top()>arr[i]){
-                result[i]=s.top();
+                if(mp.find(arr[i])!=mp.end()){
+                    mp[arr[i]] = s.top();
+                }
             }else if(!s.empty() && s.top()<=arr[i]){
                 while(!s.empty() && s.top()<=arr[i]){
                     s.pop();
                 }
                 if(!s.empty()){
-                    result[i] = s.top();
+                    if(mp.find(arr[i])!=mp.end()){
+                        mp[arr[i]] = s.top();
+                    }
                 }
             }
             s.push(arr[i]);
-            if(mp.find(arr[i])!=mp.end()){
-                mp[arr[i]] = result[i];
-            }
         }
     }
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
