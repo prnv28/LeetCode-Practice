@@ -1,42 +1,44 @@
 class Solution {
 public:
-    bool detectDFSCycle(int src,vector<vector<int>>& adj, vector<bool>& visited, vector<bool>& recStack){
-        visited[src] = true;
-        recStack[src] = true;
+    vector<vector<int>> adjacencyList(int V,vector<vector<int>>& edges){
+        vector<vector<int>> list(V);
+        for(auto edg : edges){
+            list[edg[1]].push_back(edg[0]);
+        }
+        return list;
+    }
 
-        for(int it : adj[src]){
-            if(!visited[it] && detectDFSCycle(it,adj,visited,recStack)){
-                    return true;
+    bool detectDFSCycle(int src,vector<int>& vis, vector<int>& onStack, vector<vector<int>>& adj){
+        vis[src] = 1;
+        onStack[src]=1;
+        for(int ch : adj[src]){
+            if(!vis[ch] && detectDFSCycle(ch,vis,onStack,adj)){
+                return true;
             }
-            if(recStack[it]){
+            if(onStack[ch]){
                 return true;
             }
         }
-        recStack[src] = false;
+        onStack[src]=0;
         return false;
     }
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        vector<vector<int>> adj(numCourses);
-
-        for(auto it : prerequisites){
-            adj[it[1]].push_back(it[0]);
-        }
-
-        string mode = "DFS";
-        mode = "BFS";
-
+        int V = numCourses;
+        vector<vector<int>> list = adjacencyList(V,prerequisites);
+        string mode = "BFS";
+        mode = "DFS";
+        
         if(mode=="BFS"){
-            queue<int> q;
-            vector<int> indegree(numCourses,0);
-
-            for(int i=0;i<numCourses;i++){
-                for(int it : adj[i]){
-                    indegree[it]++;
+            vector<int> inDegree(V,0);
+            for(auto edges : list){
+                for(int j : edges){
+                    inDegree[j]++;
                 }
             }
 
-            for(int i=0;i<numCourses;i++){
-                if(indegree[i]==0){
+            queue<int> q;
+            for(int i=0;i<inDegree.size();i++){
+                if(inDegree[i]==0){
                     q.push(i);
                 }
             }
@@ -45,29 +47,27 @@ public:
                 int node = q.front();
                 q.pop();
                 cnt++;
-                for(int it : adj[node]){
-                    indegree[it]--;
-                    if(indegree[it]==0){
-                        q.push(it);
+                for(int ch : list[node]){
+                    inDegree[ch]--;
+                    if(inDegree[ch]==0){
+                        q.push(ch);
                     }
                 }
             }
-            if(cnt==numCourses){
-                return true;
-            }else{
-                return false;
-            }
-        }else{
-            vector<bool> visited(numCourses,false), recStack(numCourses,false);
 
-            for(int i=0;i<numCourses;i++){
-                if(!visited[i]){
-                    if(detectDFSCycle(i,adj,visited,recStack)){
+            return (V==cnt);
+        }else{
+            vector<int> vis(V,0);
+            vector<int> onStack(V,0);
+            for(int i=0;i<V;i++){
+                if(!vis[i]){
+                    if(detectDFSCycle(i,vis,onStack,list)){
                         return false;
                     }
                 }
             }
             return true;
         }
+        
     }
 };
