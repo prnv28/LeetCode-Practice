@@ -1,76 +1,54 @@
 class Solution {
 public:
-    bool valid(int i, int j, int m, int n){
-        if(i>=0 && i<m && j>=0 && j<n){
-            return true;
-        }
-        return false;
+    bool isValidIndex(int i,int j,int m,int n){
+        return (i>=0 && i<m && j>=0 && j<n);
     }
-    void dfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
-        if(grid[i][j]=='1' && !visited[i][j]){
-            visited[i][j] = 1;
-            if(valid(i,j+1,m,n)){
-                dfs(i,j+1,m,n,grid,visited);
-            }
-            if(valid(i,j-1,m,n)){
-                dfs(i,j-1,m,n,grid,visited);
-            }
-            if(valid(i+1,j,m,n)){
-                dfs(i+1,j,m,n,grid,visited);
-            }
-            if(valid(i-1,j,m,n)){
-                dfs(i-1,j,m,n,grid,visited);
+    void dfs(int i,int j,int m, int n,vector<vector<int>>& vis, vector<vector<char>>& grid){
+        if(isValidIndex(i,j,m,n)==false){
+            return;
+        }
+        if(grid[i][j]=='0'){
+            vis[i][j]=1;
+            return;
+        }
+
+        vis[i][j]=1;
+        if(isValidIndex(i+1,j,m,n)){
+            if(!vis[i+1][j]){
+                dfs(i+1,j,m,n,vis,grid);
             }
         }
-    }
-    void bfs(int i,int j,int m,int n,vector<vector<char>>& grid, vector<vector<int>>& visited){
-        queue<pair<int,int>> q;
-        q.push({i,j});
-
-        while(!q.empty()){
-            int row = q.front().first;
-            int column = q.front().second;
-            q.pop();
-            if(grid[row][column]=='1' && !visited[row][column]){
-                visited[row][column] = 1;
-                if(valid(row,column-1,m,n)){
-                    q.push({row,column-1});
-                }
-
-                if(valid(row,column+1,m,n)){
-                    q.push({row,column+1});
-                }
-
-                if(valid(row-1,column,m,n)){
-                    q.push({row-1,column});
-                }
-
-                if(valid(row+1,column,m,n)){
-                    q.push({row+1,column});
-                }
+        if(isValidIndex(i-1,j,m,n)){
+            if(!vis[i-1][j]){
+                dfs(i-1,j,m,n,vis,grid);    
+            }
+        }
+        if(isValidIndex(i,j+1,m,n)){
+            if(!vis[i][j+1]){
+                dfs(i,j+1,m,n,vis,grid);
+            }
+        }
+        if(isValidIndex(i,j-1,m,n)){
+            if(!vis[i][j-1]){
+                dfs(i,j-1,m,n,vis,grid);
             }
         }
     }
     int numIslands(vector<vector<char>>& grid) {
-        string mode = "DFS";
-        // mode = "BFS";
         int m = grid.size();
         int n = grid[0].size();
-        vector<vector<int>> visited(m,vector<int>(n,0));
-        int count = 0;
+        vector<vector<int>> vis(m,vector<int>(n,0));
+        int cnt = 0;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                if(!visited[i][j] && grid[i][j]=='1'){
-                    count++;
-                    if(mode=="BFS"){
-                        bfs(i,j,m,n,grid,visited);
-                    }else{
-                        dfs(i,j,m,n,grid,visited);
-                    }
-                    
+                if(vis[i][j]==0 && grid[i][j]=='1'){
+                    cnt++;
+                    dfs(i,j,m,n,vis,grid);
+                }else{
+                    vis[i][j]=1;
                 }
             }
         }
-        return count;
+        return cnt;
     }
 };
