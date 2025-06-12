@@ -26,7 +26,7 @@ public:
         int V = numCourses;
         vector<vector<int>> list = adjacencyList(V,prerequisites);
         string mode = "BFS";
-        mode = "DFS";
+        // mode = "DFS";
         
         if(mode=="BFS"){
             vector<int> inDegree(V,0);
