@@ -3,6 +3,7 @@ public:
     bool BFS(int src, vector<int>& color, vector<vector<int>>& list){
         queue<int> q;
         q.push(src);
+        color[src]=0;
         while(!q.empty()){
             int node=q.front();
             q.pop();
