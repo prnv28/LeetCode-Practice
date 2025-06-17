@@ -1,3 +1,4 @@
+/* Write your PL/SQL query statement below */
 /* Write your T-SQL query statement below */
 SELECT a.machine_id, ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time
 FROM Activity a, 
