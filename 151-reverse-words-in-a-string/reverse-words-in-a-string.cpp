@@ -6,6 +6,11 @@ public:
         }
         cout<<endl;
     }
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     string reverseWords(string s) {
         vector<string> ds;
         string tmp = "";
