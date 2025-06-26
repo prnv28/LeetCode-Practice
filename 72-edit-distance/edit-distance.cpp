@@ -1,5 +1,10 @@
 class Solution {
 public:
+    Solution(){
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
     int f(int i,int j, string& s1, string& s2,vector<vector<int>>& dp){
         if(i<0) return j+1;
         if(j<0) return i+1;
