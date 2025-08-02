@@ -3,7 +3,7 @@ public:
     string getHint(string secret, string guess) {
         int bulls=0;
         int n = secret.size();
-        map<char,pair<int,int>> mp;
+        unordered_map<char,pair<int,int>> mp;
         for(int i=0;i<n;i++){
             if(secret[i]==guess[i]){
                 bulls++;
