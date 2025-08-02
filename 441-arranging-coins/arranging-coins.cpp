@@ -1,12 +1,24 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        if(n<=1) return n;
-        for(int i=0;i<=n;i++){
-            if((long)((long)i*(long)(i+1))>(long)2*n){
-                return i-1;
-            }
-        }
-        return 0;
+
+    //    long left = 0, right = n;
+        
+    //     while (left <= right) {
+    //         long mid = left + (right - left) / 2;
+    //         long coinsNeeded = mid * (mid + 1) / 2;
+            
+    //         if (coinsNeeded == n) {
+    //             return mid;
+    //         } else if (coinsNeeded < n) {
+    //             left = mid + 1;
+    //         } else {
+    //             right = mid - 1;
+    //         }
+    //     }
+        
+    //     return right;
+        long long N = n;
+        return (int)((-1 + sqrt(1 + 8 * N)) / 2);
     }
 };
