@@ -22,13 +22,10 @@ public:
                 }
             }
         }
-        int nonbulls = 0;
+        int cows = 0;
         for(auto it : mp){
-            // cout<<it.first<<" ("<<it.second.first<<","<<it.second.second<<")"<<endl;
-            if(it.second.first>0 && it.second.second>0){
-                nonbulls+=min(it.second.first,it.second.second);
-            }
+            cows+=min(it.second.first,it.second.second);
         }
-        return to_string(bulls)+"A"+to_string(nonbulls)+"B";
+        return to_string(bulls)+"A"+to_string(cows)+"B";
     }
 };
