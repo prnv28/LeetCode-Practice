@@ -10,7 +10,7 @@ public:
                 right = mid-1;
             }else{
                 left = left+1;
-                ans = max(ans,mid);
+                ans = mid;
             }
         }
         return ans;
