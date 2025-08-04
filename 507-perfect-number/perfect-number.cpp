@@ -5,7 +5,6 @@ public:
         int sum = 0;
         for(int i=2;i*i<=num;i++){
             if(num%i==0){
-                // cout<<i<<endl;
                 sum+=(i + (num/i)) ;
             }
         }
