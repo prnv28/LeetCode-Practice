@@ -1,22 +1,31 @@
 class Solution {
 public:
     string getHint(string secret, string guess) {
-        int bulls=0;
         int n = secret.size();
-        vector<int> secret_count(10, 0);
-        vector<int> guess_count(10, 0);
+        int bulls = 0;
+        int cows = 0;
+        map<char,pair<int,int>> mp;
         for(int i=0;i<n;i++){
             if(secret[i]==guess[i]){
                 bulls++;
             }else{
-              secret_count[secret[i]-'0']++;
-              guess_count[guess[i]-'0']++;
+                if(mp.find(secret[i])==mp.end()){
+                    mp[secret[i]] = {1,0};
+                }else{
+                    mp[secret[i]].first++;
+                }
+
+                if(mp.find(guess[i])==mp.end()){
+                    mp[guess[i]] = {0,1};
+                }else{
+                    mp[guess[i]].second++;
+                }
             }
         }
-        int cows = 0;
-        for (int i = 0; i < 10; i++) {
-            cows += min(secret_count[i], guess_count[i]);
+        for(auto it : mp){
+            cows += min(it.second.first,it.second.second);
         }
+
         return to_string(bulls)+"A"+to_string(cows)+"B";
     }
 };
