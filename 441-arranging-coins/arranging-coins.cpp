@@ -6,11 +6,12 @@ public:
         int ans = 0;
         while(left<=right){
             int mid = (left+right)/2;
+            cout<<mid<<endl;
             long long k = (long long ) mid * (mid+1)/2;
              if(k>n){
                 right = mid-1;
             }else{
-                left = left+1;
+                left = mid+1;
                 ans = mid;
             }
         }
