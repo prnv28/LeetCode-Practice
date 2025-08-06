@@ -1,12 +1,13 @@
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int left=0,right=n;
+        int left = 0;
+        int right = n;
         int ans = 0;
         while(left<=right){
             int mid = (left+right)/2;
-            long long coins = (long long)mid*(mid+1)/2;
-            if(coins>n){
+            long long k = (long long ) mid * (mid+1)/2;
+             if(k>n){
                 right = mid-1;
             }else{
                 left = left+1;
@@ -14,6 +15,5 @@ public:
             }
         }
         return ans;
-        // return (int) (sqrt(1+(long long) 8*n) - 1)/2;
     }
 };
